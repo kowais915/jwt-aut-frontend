@@ -1,9 +1,26 @@
+import Navbar from './components/Navbar';
 import './App.css';
-import {browserRouter, Routes, Route, Link, NavLink} from 'react-router-dom';
+import {browserRouter, Routes, Route, Link, NavLink, BrowserRouter} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <h1>Frontend for the JWT Project</h1>
+     
+
+      <BrowserRouter>
+      
+        <header>
+
+          <Navbar/>
+
+        </header>
+
+        <main>
+          <Routes>
+
+          </Routes>
+        </main>
+      
+      </BrowserRouter>
     </div>
   );
 }
