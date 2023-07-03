@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import About from './components/About';
+import Login from './components/Login';
 import './App.css';
 import {browserRouter, Routes, Route, Link, NavLink, BrowserRouter} from 'react-router-dom';
 import Home from './components/Home';
@@ -22,6 +23,8 @@ function App() {
             <Route  path="/about"  element={<About/>}/>
 
             <Route path ="/dashboard" element={<Dashboard/>}/>
+
+            <Route  path ="/login" element={<Login/>}/>
           </Routes>
         </main>
       
