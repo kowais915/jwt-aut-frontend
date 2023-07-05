@@ -6,6 +6,8 @@ import {browserRouter, Routes, Route, Link, NavLink, BrowserRouter} from 'react-
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Signup from './components/Signup';
+import { AuthProvider } from './context/authContext';
+
 function App() {
   return (
     <div className="App">
