@@ -1,33 +1,105 @@
+
 import {createContext, useReducer } from 'react';
 
-export const AuthContext = createContext();
 
-const AuthReducer = (state, action)=>{
+export const authContext = createContext();
+const authReducer = (state, action)=>{
     switch(action.type){
-        case 'CHANGE_COLOR':
-            return {...state, color: action.payload}
+        case "LOGIN":
+            return { user: action.payload}
+        case "SIGNUP":
+            return {user: null}
         default:
             return state
+        
     }
+
 }
 
+export  function AuthProvider({children}){
+    const [state, dispatch] = useReducer(authReducer, {
+        user: null
+    })
 
-export const AuthProvider = ({children })=>{
+    const login = (status)=>{
+        dispatch({type: 'LOGIN', payload: status});
 
-    const [state, dispatch ] = useReducer(AuthReducer, {
-
-        color: 'black'
-    });
-
-    const changeColor = (color)=>{
-        dispatch({type: "CHANGE_COLOR", payload: color});
     }
 
+    const signup = (status)=>{
+        dispatch({type: 'SIGNUP', payload: status});
+
+    }
     return(
-        <AuthContext.Provider value ={{...state, changeColor}}>
-
+        <authContext.Provider>
             {children}
-
-        </AuthContext.Provider>
+        </authContext.Provider>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import {createContext, useReducer } from 'react';
+
+// export const AuthContext = createContext();
+
+// const AuthReducer = (state, action)=>{
+//     switch(action.type){
+//         case 'CHANGE_COLOR':
+//             return {...state, color: action.payload}
+//         default:
+//             return state
+//     }
+// }
+
+
+// export const AuthProvider = ({children })=>{
+
+//     const [state, dispatch ] = useReducer(AuthReducer, {
+
+//         color: 'black'
+//     });
+
+//     const changeColor = (color)=>{
+//         dispatch({type: "CHANGE_COLOR", payload: color});
+//     }
+
+//     return(
+//         <AuthContext.Provider value ={{...state, changeColor}}>
+
+//             {children}
+
+//         </AuthContext.Provider>
+//     )
+// }

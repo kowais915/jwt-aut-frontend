@@ -12,14 +12,34 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {useState} from 'react';
+
 
 
 // using context
-import {ThemeContext } from '../context/themeContext';
-import {useContext } from 'react';
+
 
 
 function Copyright(props) {
+
+
+
+// // function to handle the login field
+// const handleLogin = (e)=>{
+//   e.preventDefault();
+
+//   setEmail(e.target.value);
+
+// }
+
+
+// // function to handle the password field
+// const handlePassword = (e)=>{
+//   e.preventDefault();
+//   setPassword(e.target.value);
+// }
+
+
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
@@ -89,6 +109,10 @@ export default function SignInSide() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                // onChange={(e)=>{
+                //   e.preventDefault();
+                //   setEmail(e.target.value);
+                // }}
                 autoFocus
               />
               <TextField

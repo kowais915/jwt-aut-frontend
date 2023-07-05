@@ -1,18 +1,14 @@
 import {BrowserRouter, Routes, Route, Link, NavLink} from 'react-router-dom';
 import styles from '../styles/Navbar.module.css';
-import {useContext } from 'react';
-import { AuthContext } from '../context/authContext';
 
 const Navbar = () => {
 
-    const {color, changeColor} = useContext(AuthContext);
+
     return (
-        <nav className={styles.container} style={{background: color}}
+        <nav className={styles.container} 
         
         
-            onClick={()=>{
-                changeColor('red');
-            }}
+           
         >
 
             <div className="brand">
