@@ -8,6 +8,10 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import Switch from '@mui/material/Switch';
 import {useState } from 'react';
 import { colorContext } from '../context/colorContext';
+import IconButton from '@mui/material/IconButton';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 
 
 
@@ -61,6 +65,9 @@ const Navbar = () => {
                 
                 >Logout</Button>}
 
+                <IconButton  aria-label="delete" size="small">
+                    <DarkModeOutlinedIcon style={{color: 'white'}}></DarkModeOutlinedIcon>
+                </IconButton>
                 <Switch
                     checked={checked}
                     onChange={handleChange}
@@ -75,6 +82,10 @@ const Navbar = () => {
                         
                      }}
                 />
+
+                <IconButton>
+                    <LightModeOutlinedIcon style={{color: 'blue'}}></LightModeOutlinedIcon>
+                </IconButton>
                 
                 
             </div>
