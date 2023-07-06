@@ -17,7 +17,7 @@ const Navbar = () => {
     const {user } = useAuthContext();
     const {color, changeColor } = useContext(colorContext);
     // const {color, changeColor } = colorContext();
-    const [checked, setChecked] = useState(true);
+    const [checked, setChecked] = useState(false);
 
     const handleChange = (e)=>{
         setChecked(e.target.checked);
@@ -32,6 +32,15 @@ const Navbar = () => {
         <nav className={styles.container} 
 
          style={{background: color}}
+         onClick={()=>{
+            if(!checked){
+                changeColor('blue')
+
+            }else{
+                changeColor('black')
+            }
+            
+         }}
         >
 
             <div className="brand">

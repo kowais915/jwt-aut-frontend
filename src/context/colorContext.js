@@ -21,7 +21,7 @@ export function ColorProvider ({children}){
     });
 
     const changeColor = (color)=>{
-        alert("I ran")
+       
         dispatch({type: "CHANGE_COLOR", payload: color});
     }
 
