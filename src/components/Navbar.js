@@ -32,15 +32,7 @@ const Navbar = () => {
         <nav className={styles.container} 
 
          style={{background: color}}
-         onClick={()=>{
-            if(!checked){
-                changeColor('blue')
-
-            }else{
-                changeColor('black')
-            }
-            
-         }}
+       
         >
 
             <div className="brand">
@@ -73,6 +65,15 @@ const Navbar = () => {
                     checked={checked}
                     onChange={handleChange}
                     inputProps={{ 'aria-label': 'controlled' }}
+                    onClick={()=>{
+                        if(!checked){
+                            changeColor('blue')
+            
+                        }else{
+                            changeColor('black')
+                        }
+                        
+                     }}
                 />
                 
                 
