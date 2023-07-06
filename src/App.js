@@ -10,7 +10,7 @@ import Signup from './components/Signup';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
      
 
       <BrowserRouter>
@@ -21,7 +21,7 @@ function App() {
 
         </header>
 
-        <main>
+        <main >
          
           <Routes>
             <Route  path="/about"  element={<About/>}/>

@@ -14,6 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useSignup } from '../hooks/useSignup';
 import {useState } from 'react';
+import {useContext } from 'react';
+import {colorContext} from '../context/colorContext'
 
 function Copyright(props) {
   return (
@@ -33,6 +35,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const {color, changeColor } = useContext(colorContext);
   const [email, setEmail ] = useState('');
   const [password, setPassword] = useState('');
 
@@ -50,8 +53,10 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+    <ThemeProvider theme={defaultTheme}
+    style={{ background: 'black'}}
+    >
+      <Container component="main" maxWidth="xs" >
         <CssBaseline />
         <Box
           sx={{
