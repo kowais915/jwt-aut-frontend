@@ -4,10 +4,12 @@ import {colorContext } from '../context/colorContext';
 import {useContext} from 'react';
 import {useLogout } from '../hooks/useLogout';
 import Button from '@mui/material/Button';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 const Navbar = () => {
     const {logout} = useLogout();
+    const {user } = useAuthContext();
 
   
 
@@ -29,6 +31,7 @@ const Navbar = () => {
                 <NavLink to="/dashboard">Dashboard</NavLink>
                 <NavLink to="/login">Login</NavLink>
                 <NavLink to="/signup">Sign up</NavLink>
+                {user && <span>{user.email}</span>}
                 <Button 
                     variant='contained'
                     onClick={logout}

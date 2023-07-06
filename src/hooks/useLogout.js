@@ -6,7 +6,7 @@ const {dispatch }  = useAuthContext();
     const logout = ()=>{
 
         localStorage.removeItem('user');
-        alert('wow')
+        
         dispatch({type: 'LOGOUT'});
     }
 
