@@ -43,8 +43,16 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/dashboard">Dashboard</NavLink>
+                {(user) ? <span></span>:
+                
                 <NavLink to="/login">Login</NavLink>
-                <NavLink to="/signup">Sign up</NavLink>
+
+                }
+
+                {(user) ? <span></span>: <NavLink to="/signup">Sign up</NavLink>
+
+                }
+
                 {user && <span>{user.email}</span>}
                 { (user == null) ? <span></span>: <Button 
                     variant='contained'
