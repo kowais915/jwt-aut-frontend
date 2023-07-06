@@ -7,7 +7,7 @@ const authReducer = (state, action)=>{
     switch(action.type){
         case "LOGIN":
             return { user: action.payload}
-        case "SIGNUP":
+        case "LOGOUT":
             return {user: null}
         default:
             return state
@@ -21,17 +21,20 @@ export  function AuthProvider({children}){
         user: null
     })
 
-    const login = (status)=>{
-        dispatch({type: 'LOGIN', payload: status});
+    // const login = (status)=>{
+    //     dispatch({type: 'LOGIN', payload: status});
 
-    }
+    // }
 
-    const signup = (status)=>{
-        dispatch({type: 'SIGNUP', payload: status});
+    // const signup = (status)=>{
+    //     dispatch({type: 'SIGNUP', payload: status});
 
-    }
+    // }
+
+    console.log("Auth state: ", state);
+    
     return(
-        <authContext.Provider>
+        <authContext.Provider value= {{...state, dispatch}} >
             {children}
         </authContext.Provider>
     )

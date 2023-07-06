@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useState} from 'react';
+import {useLogin } from '../hooks/useLogin';
 
 
 
@@ -56,14 +57,20 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignInSide() {
-  const handleSubmit = (event) => {
+export default function  SignInSide() {
+  const [email, setEmail ]  = useState('');
+  const [password, setPassword] = useState('');
+  const {login, isLoading, error} = useLogin();
+  
+  const handleSubmit =  async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+    await login(email, password);
+   
   };
 
   return (
@@ -113,6 +120,8 @@ export default function SignInSide() {
                 //   e.preventDefault();
                 //   setEmail(e.target.value);
                 // }}
+
+                onChange={(e)=>setEmail(e.target.value)}
                 autoFocus
               />
               <TextField
@@ -124,12 +133,14 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange= {(e)=>setPassword(e.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
               <Button
+                disabled={isLoading}
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -137,6 +148,8 @@ export default function SignInSide() {
               >
                 Sign In
               </Button>
+
+              {error }
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
