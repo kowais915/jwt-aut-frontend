@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Switch from '@mui/material/Switch';
 import {useState } from 'react';
+import { colorContext } from '../context/colorContext';
 
 
 
@@ -14,6 +15,7 @@ import {useState } from 'react';
 const Navbar = () => {
     const {logout} = useLogout();
     const {user } = useAuthContext();
+    const {color, changeColor } = useContext(colorContext);
     // const {color, changeColor } = colorContext();
     const [checked, setChecked] = useState(true);
 
@@ -28,6 +30,8 @@ const Navbar = () => {
 
     return (
         <nav className={styles.container} 
+
+         style={{background: color}}
         >
 
             <div className="brand">
