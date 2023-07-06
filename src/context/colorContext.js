@@ -17,7 +17,7 @@ const colorReducer = (state, action)=>{
 
 export function ColorProvider ({children}){
     const [state, dispatch] = useReducer(colorReducer, {
-        color: 'blue'
+        color: 'black'
     });
 
     const changeColor = (color)=>{
