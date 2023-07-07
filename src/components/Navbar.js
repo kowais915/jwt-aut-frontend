@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route, Link, NavLink} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Link, NavLink, Navigate} from 'react-router-dom';
 import styles from '../styles/Navbar.module.css';
 // import {colorContext } from '../context/colorContext';
 import {useContext} from 'react';
@@ -16,12 +16,15 @@ import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 
 
 
+
 const Navbar = () => {
     const {logout} = useLogout();
     const {user } = useAuthContext();
     const {color, changeColor } = useContext(colorContext);
     // const {color, changeColor } = colorContext();
     const [checked, setChecked] = useState(false);
+    console.log("user: ", user);
+    
 
     const handleChange = (e)=>{
         setChecked(e.target.checked);
@@ -47,7 +50,11 @@ const Navbar = () => {
 
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
-                <NavLink to="/dashboard">Dashboard</NavLink>
+                
+           
+                <NavLink  to="/dashboard">Dashboard</NavLink>
+    
+                
                 {(user) ? <span></span>:
                 
                 <NavLink to="/login">Login</NavLink>

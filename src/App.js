@@ -6,9 +6,13 @@ import {browserRouter, Routes, Route, Link, NavLink, BrowserRouter} from 'react-
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Signup from './components/Signup';
+import { useAuthContext } from './hooks/useAuthContext';
+import Protected from './components/Protected';
 
 
 function App() {
+  const {user } = useAuthContext();
+
   return (
     <div className="App" >
      
@@ -26,7 +30,16 @@ function App() {
           <Routes>
             <Route  path="/about"  element={<About/>}/>
 
-            <Route path ="/dashboard" element={<Dashboard/>}/>
+            
+
+            <Route path ="/dashboard" element={
+            
+            <Protected>
+                <Dashboard/>
+            </Protected>
+          
+          
+            }/>
 
             <Route  path ="/login" element={<Login/>}/>
 

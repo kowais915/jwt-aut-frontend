@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useState} from 'react';
 import {useLogin } from '../hooks/useLogin';
 
+// import{BrowserRouter, Routes, Route} 
+import { useNavigate, Redirect,Route  } from 'react-router-dom';
 
 
 // using context
@@ -58,6 +60,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function  SignInSide() {
+  const navigate = useNavigate();
+
   const [email, setEmail ]  = useState('');
   const [password, setPassword] = useState('');
   const {login, isLoading, error} = useLogin();
@@ -70,6 +74,10 @@ export default function  SignInSide() {
     //   password: data.get('password'),
     // });
     await login(email, password);
+
+    
+    navigate('/home');
+
    
   };
 
@@ -145,11 +153,12 @@ export default function  SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                
               >
                 Sign In
               </Button>
 
-              {error }
+              {error && <span>{error}</span>}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
