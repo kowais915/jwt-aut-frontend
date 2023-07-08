@@ -64,7 +64,7 @@ export default function  SignInSide() {
 
   const [email, setEmail ]  = useState('');
   const [password, setPassword] = useState('');
-  const {login, isLoading, error} = useLogin();
+  const {login, error, isLoading} = useLogin();
   
   const handleSubmit =  async (event) => {
     event.preventDefault();
@@ -76,7 +76,7 @@ export default function  SignInSide() {
     await login(email, password);
 
     
-    navigate('/home');
+    // navigate('/home');
 
    
   };

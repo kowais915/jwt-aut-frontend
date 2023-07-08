@@ -17,6 +17,7 @@ import {useState } from 'react';
 import {useContext } from 'react';
 import {colorContext} from '../context/colorContext'
 
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -54,7 +55,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}
-    style={{ background: 'black'}}
+   
     >
       <Container component="main" maxWidth="xs" >
         <CssBaseline />
