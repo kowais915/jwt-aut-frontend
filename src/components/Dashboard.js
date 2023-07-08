@@ -2,11 +2,17 @@ import {useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 import {Navigate } from 'react-router-dom';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 const Dashboard = () => {
     const [dashboard, setDashboard] = useState({});
     const {user } = useAuthContext();
+    
+ 
 
     // if(user){
     //     console.log("user from dashboard: ", user);
@@ -30,6 +36,8 @@ const Dashboard = () => {
     return ( 
         <div className="dash">
             <h1>Dashboard page</h1>
+            
+
         </div>
 
      );

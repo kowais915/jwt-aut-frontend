@@ -15,9 +15,11 @@ import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import {useNavigate } from 'react-router-dom';
 
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const Navbar = ({notify}) => {
+const Navbar = () => {
     const navigate = useNavigate();
     const {logout} = useLogout();
     const {user } = useAuthContext();
@@ -26,10 +28,16 @@ const Navbar = ({notify}) => {
     const [checked, setChecked] = useState(false);
     console.log("user: ", user);
     
+    const notify = () => toast("You are not logged in!");
 
     const handleChange = (e)=>{
         setChecked(e.target.checked);
         
+    }
+    const handleDashClick = ()=>{
+        if(localStorage.getItem('user') == null){
+            notify();
+        }
     }
   
 
@@ -38,10 +46,11 @@ const Navbar = ({notify}) => {
 
     return (
         <nav className={styles.container} 
-
+        
          style={{background: color}}
        
         >
+            <ToastContainer />
 
             <div className="brand">
                 Auth System
@@ -53,7 +62,7 @@ const Navbar = ({notify}) => {
                 <NavLink to="/about">About</NavLink>
                 
            
-                <NavLink  to="/dashboard">Dashboard</NavLink>
+                <NavLink  to="/dashboard" onClick={handleDashClick}>Dashboard</NavLink>
     
                 
                 {(user) ? <span></span>:
