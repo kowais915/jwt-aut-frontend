@@ -17,6 +17,7 @@ import {useLogin } from '../hooks/useLogin';
 
 // import{BrowserRouter, Routes, Route} 
 import { useNavigate, Redirect,Route  } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 // using context
@@ -60,11 +61,14 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function  SignInSide() {
+
   const navigate = useNavigate();
 
   const [email, setEmail ]  = useState('');
   const [password, setPassword] = useState('');
   const {login, error, isLoading} = useLogin();
+  const {user} = useAuthContext();
+ 
   
   const handleSubmit =  async (event) => {
     event.preventDefault();
@@ -73,13 +77,21 @@ export default function  SignInSide() {
     //   email: data.get('email'),
     //   password: data.get('password'),
     // });
-    await login(email, password);
+    
+      await login(email, password);
+  
+    
 
     
-    // navigate('/home');
 
    
   };
+
+  if(localStorage.getItem('user')){
+
+    navigate('/home');
+
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
