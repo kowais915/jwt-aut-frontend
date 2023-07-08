@@ -17,7 +17,7 @@ import {useNavigate } from 'react-router-dom';
 
 
 
-const Navbar = () => {
+const Navbar = ({notify}) => {
     const navigate = useNavigate();
     const {logout} = useLogout();
     const {user } = useAuthContext();
@@ -71,6 +71,7 @@ const Navbar = () => {
                     variant='contained'
                     onClick={()=>{
                         logout();
+                        
                         if(localStorage.getItem('user') ==null){
                             navigate('/login')
                         

@@ -16,6 +16,11 @@ import { useSignup } from '../hooks/useSignup';
 import {useState } from 'react';
 import {useContext } from 'react';
 import {colorContext} from '../context/colorContext'
+import {useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 function Copyright(props) {
@@ -36,11 +41,22 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const {color, changeColor } = useContext(colorContext);
   const [email, setEmail ] = useState('');
   const [password, setPassword] = useState('');
+  const {user } = useAuthContext();
 
   const {signup, error, isLoading} = useSignup();
+  const notify = () => toast("You successfully signed up.");
+
+  useEffect(()=>{
+    if(user){
+      notify();
+      navigate('/')
+
+    }
+  }, [user]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

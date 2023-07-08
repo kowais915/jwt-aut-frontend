@@ -14,6 +14,12 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useState} from 'react';
 import {useLogin } from '../hooks/useLogin';
+import {useEffect } from 'react';
+
+
+// using toaster
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import{BrowserRouter, Routes, Route} 
 import { useNavigate, Redirect,Route  } from 'react-router-dom';
@@ -61,6 +67,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function  SignInSide() {
+  
 
   const navigate = useNavigate();
 
@@ -68,6 +75,9 @@ export default function  SignInSide() {
   const [password, setPassword] = useState('');
   const {login, error, isLoading} = useLogin();
   const {user} = useAuthContext();
+
+  const notify = () => toast("Logged in!");
+  const logout = () => toast("Logged out!");
  
   
   const handleSubmit =  async (event) => {
@@ -79,22 +89,25 @@ export default function  SignInSide() {
     // });
     
       await login(email, password);
-  
-    
-
+   
     
 
    
   };
 
+ useEffect(() => {
   if(localStorage.getItem('user')){
 
-    navigate('/home');
 
+    notify();
+    navigate('/home');
+    
   }
 
+ }, [user]);
   return (
     <ThemeProvider theme={defaultTheme}>
+      <ToastContainer/>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -165,10 +178,15 @@ export default function  SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+               
                 
               >
+
                 Sign In
+                <ToastContainer />
               </Button>
+
+              
 
               {error && <span>{error}</span>}
               <Grid container>

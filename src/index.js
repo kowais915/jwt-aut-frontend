@@ -12,7 +12,7 @@ import { ColorProvider } from './context/colorContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
  
     <ColorProvider>
       <AuthProvider>   
@@ -21,6 +21,6 @@ root.render(
     </ColorProvider>
 
   
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
