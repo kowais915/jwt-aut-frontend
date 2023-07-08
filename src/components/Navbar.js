@@ -12,12 +12,13 @@ import IconButton from '@mui/material/IconButton';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-
+import {useNavigate } from 'react-router-dom';
 
 
 
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const {logout} = useLogout();
     const {user } = useAuthContext();
     const {color, changeColor } = useContext(colorContext);
@@ -68,7 +69,14 @@ const Navbar = () => {
                 {user && <span>{user.email}</span>}
                 { (user == null) ? <span></span>: <Button 
                     variant='contained'
-                    onClick={logout}
+                    onClick={()=>{
+                        logout();
+                        if(localStorage.getItem('user') ==null){
+                            navigate('/login')
+                        
+                        }
+                    }}
+
                 
                 >Logout</Button>}
 
