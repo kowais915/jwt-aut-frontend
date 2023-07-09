@@ -78,6 +78,7 @@ export default function  SignInSide() {
 
   const notify = () => toast("Logged in!");
   const logout = () => toast("Logged out!");
+  const invalidEmail = () => toast(` ${error}`);
  
   
   const handleSubmit =  async (event) => {
@@ -105,6 +106,14 @@ export default function  SignInSide() {
   }
 
  }, [user]);
+
+
+ useEffect(() => {
+  if(error){
+    invalidEmail();
+  }
+
+ }, [error]);
   return (
     <ThemeProvider theme={defaultTheme}>
       <ToastContainer/>
@@ -188,7 +197,7 @@ export default function  SignInSide() {
 
               
 
-              {error && <span>{error}</span>}
+              {/* {error && <span>{()=>{invalidEmail()}}</span>} */}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
