@@ -1,11 +1,16 @@
 import{ useState } from 'react'; 
 import {useAuthContext} from './useAuthContext';
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 
 export const useLogin = ()=>{
    const [error, setError] = useState(null);
    const [isLoading, setIsLoading] = useState(null);
    const {dispatch } = useAuthContext();
+
+
+  const invalidEmail = () => toast(` ${error}`);
 
 
    const login = async (email, password)=>{
@@ -24,8 +29,12 @@ export const useLogin = ()=>{
         
         
         if(!resp.ok){
+            console.log("Error: ", json)
             setIsLoading(false);
-            setError(json.error);
+            setError((prev)=> prev = json.error);
+            console.log(error);
+            // debugger
+            // invalidEmail()
         }
 
         if(resp.ok){

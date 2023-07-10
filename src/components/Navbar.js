@@ -50,7 +50,7 @@ const Navbar = () => {
          style={{background: color}}
        
         >
-            <ToastContainer />
+            {/* <ToastContainer /> */}
 
             <div className="brand">
                 Auth System

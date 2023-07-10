@@ -4,6 +4,7 @@ import{useEffect } from 'react';
 
 
 export const authContext = createContext();
+
 const authReducer = (state, action)=>{
     switch(action.type){
         case "LOGIN":
@@ -39,6 +40,7 @@ export  function AuthProvider({children}){
             dispatch({type: 'LOGIN', payload: user})
         }
     }, [])
+    
     console.log("Auth state: ", state);
 
 

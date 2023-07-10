@@ -81,20 +81,23 @@ export default function  SignInSide() {
   const invalidEmail = () => toast(` ${error}`);
  
   
-  const handleSubmit =  async (event) => {
+  const handleSubmit =   (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    console.log("Event:: ", event);
+    // const data = new FormData(event.currentTarget);
     // console.log({
     //   email: data.get('email'),
     //   password: data.get('password'),
     // });
     
-      await login(email, password);
-   
+       login(email, password);
+
     
 
    
   };
+
+
 
  useEffect(() => {
   if(localStorage.getItem('user')){
@@ -109,14 +112,19 @@ export default function  SignInSide() {
 
 
  useEffect(() => {
+  console.log("User:::: ", error);
   if(error){
     invalidEmail();
+    
   }
 
  }, [error]);
+
+
+
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ToastContainer/>
+      
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -192,7 +200,7 @@ export default function  SignInSide() {
               >
 
                 Sign In
-                <ToastContainer />
+               
               </Button>
 
               
