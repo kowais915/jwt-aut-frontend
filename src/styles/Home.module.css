@@ -1,0 +1,12 @@
+
+.home{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+   
+}
+
+.para{
+    display: flex;
+    justify-content: center;
+}
